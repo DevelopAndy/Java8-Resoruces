@@ -10,18 +10,30 @@ public class Lambda {
 	
 	public static void main(String[] args) {
 
-		List<String> cursos = new ArrayList<>();
-        cursos.add("curso de fisica");
-        cursos.add("curso de java 8");
-        cursos.add("curso de geometria del espacio");
-        cursos.add("curso de historia universal");
+	        List<String> cursos = new ArrayList<>();
+	        cursos.add("curso de fisica");
+	        cursos.add("curso de java 8");
+	        cursos.add("curso de geometria del espacio");
+	        cursos.add("curso de historia universal");
 
-        cursos.sort((o1, o2) ->
-            Integer.compare(o2.length(), o1.length())
-        );
+	        cursos.sort(new CompararClase3());
 
-        cursos.forEach(s -> { if(s.length() > 15) System.out.println(s);});
-    }
+	        cursos.forEach(x -> System.out.println(x));
+	    }
+	}
+
+
+	class CompararClase3 implements Comparator<String> {
+
+	    @Override
+	    public int compare(String o1, String o2) {
+	        if(o1.length() > o2.length()){
+	            return 1;
+	        } else if (o1.length() < o2.length()){
+	            return -1;
+	        }
+	        return 0;
+	    }
 }
 
 

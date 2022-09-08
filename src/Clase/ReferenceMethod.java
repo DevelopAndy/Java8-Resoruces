@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class FunctionalInterface {
+public class ReferenceMethod {
 	
 	public static void main(String[] args) {
 
@@ -16,11 +16,9 @@ public class FunctionalInterface {
         cursos.add("curso de geometria del espacio");
         cursos.add("curso de historia universal");
 
-        cursos.sort((o1, o2) ->
-            Integer.compare(o2.length(), o1.length())
-        );
+        cursos.sort(Comparator.comparing(String::length).reversed());
 
-        cursos.forEach(s -> { if(s.length() > 15) System.out.println(s);});
+        cursos.forEach(System.out::println);
     }
 }
 
