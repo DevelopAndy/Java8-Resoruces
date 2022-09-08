@@ -3,15 +3,15 @@ package Clase;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 import Model.Curso;
 
-public class StreamExample {
+public class UsingCollectors {
 	
 	public static void main(String[] args) {
 
-        List<Curso> cursos = new ArrayList<>();
+		List<Curso> cursos = new ArrayList<>();
         cursos.add(new Curso("curso de fisica", 200));
         cursos.add(new Curso("curso de java 8", 500));
         cursos.add(new Curso("curso de geometria del espacio", 400));
@@ -25,12 +25,20 @@ public class StreamExample {
 
        // boolean validaTodos = cursos.stream().allMatch(x-> x.getHoras() > 200);
 
-        Optional<Curso> optionalCurso = cursos.stream().filter(x-> x.getHoras()>600).findFirst();
+        /*Optional<Curso> optionalCurso = cursos.stream().filter(x-> x.getHoras()>600).findFirst();
 
         if(optionalCurso.isPresent()) {
             System.out.println(optionalCurso.get().getNombre());
-        }
-	}
+        }*/
+
+        //cursos.stream().filter(x-> x.getHoras()>300).findFirst().ifPresent(System.out::println);
+
+       // Curso curso = cursos.stream().filter(x-> x.getHoras()>300).findFirst().orElse(new Curso("No Existe!!!!", 0));
+        //System.out.println(curso);
+
+        List<Curso> cursoList = cursos.stream().filter(x-> x.getHoras()>300).collect(Collectors.toList());
+        cursoList.parallelStream().forEach(System.out::println);
+    }
 }
 
 
