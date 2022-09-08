@@ -16,9 +16,9 @@ public class ReferenceMethod {
         cursos.add("curso de geometria del espacio");
         cursos.add("curso de historia universal");
 
-        cursos.sort(Comparator.comparing(String::length).reversed());
+        cursos.sort(Comparator.comparing(String::length));
 
-        cursos.forEach(System.out::println);
+        cursos.forEach(s -> System.out.println(s));
     }
 }
 
